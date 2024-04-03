@@ -84,5 +84,17 @@ namespace UserRegistrationService
             Assert.IsFalse(new RegistrationUser("Sasan", "password", "sasan@gmail.com").ContainsSpecialCharacter("password"));
         }
 
+        
+        [TestMethod]
+        public void Is_Password_At_Least_8_Characters_Long() // Testar om lösenordet är minst 8 tecken långt
+        {
+            // Arrange & Act: Förbereder och utför testet genom att skapa en användare med ett långt lösenord
+            var userWithLongPassword = new RegistrationUser("Sasan", "longpass@", "@gmail.com");
+
+            // Assert: Verifierar om lösenordets längd är åtminstone 8 tecken lång
+            Assert.IsTrue(userWithLongPassword.Password.Length >= 8, "Password is not at least 8 characters longt.");
+            // Om lösenordet är kortare än 8 tecken misslyckas testet och felmeddelandet "Password is not at least 8 characters longt." visas.
+        }
+
     }
 }
